@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun add:*)",
+      "Bash(bun run:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__query-docs",
+      "Bash(pkill:*)",
+      "Bash(node:*)",
+      "Bash(npx tsc:*)",
+      "Bash(bunx tsc:*)",
+      "Bash(npx vite:*)",
+      "Bash(./node_modules/.bin/tsc --noEmit 2>&1)",
+      "Bash(./node_modules/.bin/vite build:*)",
+      "Bash(./node_modules/.bin/tsc --noEmit 2>&1 && ./node_modules/.bin/vite build 2>&1)"
+    ]
+  }
+}
