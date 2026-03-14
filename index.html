@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polar Footer - Premium Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(circle at top, rgba(227, 233, 255, 0.7), transparent 44%),
+        linear-gradient(180deg, #fbfbfd 0%, #eef1f5 100%);
+      color: #111;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 48px;
+      padding: 56px 24px 40px;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 6vw, 4.5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+    }
+
+    .intro {
+      max-width: 780px;
+      text-align: center;
+    }
+
+    .intro p {
+      margin-top: 16px;
+      color: rgba(17, 17, 17, 0.7);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .grid {
+      width: min(100%, 920px);
+      display: grid;
+      gap: 20px;
+    }
+
+    .section {
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 20px 60px rgba(17, 17, 17, 0.06);
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+    }
+
+    .section-head {
+      padding: 20px 24px 14px;
+    }
+
+    .section h2 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(17, 17, 17, 0.5);
+    }
+
+    .section-copy {
+      margin-top: 10px;
+      color: rgba(17, 17, 17, 0.68);
+      font-size: 0.96rem;
+      line-height: 1.5;
+    }
+
+    .demo-shell {
+      padding: 0;
+    }
+
+    .dark-demo {
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 40%),
+        linear-gradient(180deg, #171717 0%, #0f0f0f 100%);
+    }
+
+    @media (max-width: 640px) {
+      .content {
+        padding-top: 40px;
+      }
+
+      .section-head {
+        padding: 18px 18px 12px;
+        color: #ffffff;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="content">
+    <section class="intro">
+      <h1>Polar footer, made quieter.</h1>
+      <p>
+        A production-oriented footer should feel branded and precise, not restless.
+        This version keeps one entrance, a restrained hover reveal, and a calmer visual hierarchy.
+      </p>
+    </section>
+
+    <section class="grid">
+      <div class="section">
+        <div class="section-head">
+          <h2>Light theme</h2>
+          <p class="section-copy">Default state stays compact. Hover reveals the endorsement line.</p>
+        </div>
+        <div class="demo-shell">
+          <polar-footer></polar-footer>
+        </div>
+      </div>
+
+      <div class="section dark-demo">
+        <div class="section-head">
+          <h2>Dark theme</h2>
+          <p class="section-copy">Same behavior, tuned for lower-luminance surfaces.</p>
+        </div>
+        <div class="demo-shell">
+          <polar-footer theme="dark"></polar-footer>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/index.ts"></script>
+</body>
+
+</html>
