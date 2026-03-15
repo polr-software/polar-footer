@@ -1,11 +1,14 @@
 {
-  "name": "polar-footer",
+  "name": "@polr/footer",
   "version": "1.0.0",
   "description": "Reusable Polr footer package with web component and React entrypoint",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -25,6 +28,7 @@
     "dev": "vite",
     "build": "vite build && npm run build:types",
     "build:types": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "npm run build",
     "preview": "vite preview"
   },
   "devDependencies": {
