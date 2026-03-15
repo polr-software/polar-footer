@@ -62,10 +62,10 @@ bun add @polr/footer
 ## Uzycie w React
 
 ```tsx
-import { PolarFooter } from "@polr/footer/react";
+import { PolrFooter } from "@polr/footer/react";
 
 export function Layout() {
-  return <PolarFooter variant="white" href="https://polr.pl" />;
+  return <PolrFooter variant="white" href="https://polr.pl" />;
 }
 ```
 

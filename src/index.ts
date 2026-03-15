@@ -1,12 +1,12 @@
-import { registerPolarFooter } from "./polar-footer";
+import { registerPolrFooter } from "./polar-footer";
 
 export {
   POLAR_FOOTER_TAG_NAME,
   POLAR_FOOTER_VARIANTS,
-  PolarFooterElement,
-  registerPolarFooter,
-  type PolarFooterTheme,
-  type PolarFooterVariant,
+  PolrFooterElement,
+  registerPolrFooter,
+  type PolrFooterTheme,
+  type PolrFooterVariant,
 } from "./polar-footer";
 
-registerPolarFooter();
+registerPolrFooter();

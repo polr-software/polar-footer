@@ -1,25 +1,25 @@
-import { createElement, useEffect } from "react";
+import { createElement, type ReactElement, useEffect } from "react";
 
 import {
   POLAR_FOOTER_TAG_NAME,
-  type PolarFooterVariant,
-  registerPolarFooter,
+  type PolrFooterVariant,
+  registerPolrFooter,
 } from "./polar-footer";
 
-export interface PolarFooterProps {
-  variant?: PolarFooterVariant;
+export interface PolrFooterProps {
+  variant?: PolrFooterVariant;
   href?: string;
   id?: string;
   className?: string;
   style?: Record<string, string | number>;
 }
 
-export function PolarFooter({
+export function PolrFooter({
   variant = "white",
   ...props
-}: PolarFooterProps) {
+}: PolrFooterProps): ReactElement {
   useEffect(() => {
-    registerPolarFooter();
+    registerPolrFooter();
   }, []);
 
   return createElement(POLAR_FOOTER_TAG_NAME, {

@@ -1,12 +1,12 @@
 const POLAR_FOOTER_ELEMENT_BASE = (
-  typeof HTMLElement === "undefined" ? class {} : HTMLElement
+  typeof HTMLElement === "undefined" ? class { } : HTMLElement
 ) as typeof HTMLElement;
 
 export const POLAR_FOOTER_TAG_NAME = "polar-footer";
 export const POLAR_FOOTER_VARIANTS = ["white", "black"] as const;
 
-export type PolarFooterVariant = (typeof POLAR_FOOTER_VARIANTS)[number];
-export type PolarFooterTheme = "light" | "dark";
+export type PolrFooterVariant = (typeof POLAR_FOOTER_VARIANTS)[number];
+export type PolrFooterTheme = "light" | "dark";
 
 const LOGO_ICON = `<svg viewBox="0 0 2000 1996.95" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path d="M568.23,1442.47c-111.71,79.07-246.9,197.83-168.4,348.89-147.13-75.76-196.49-248.1-125.32-394.89,61.31-126.46,224.54-267.71,342.66-341.82l451.92-283.57c107.53-67.47,210.11-132.21,307.9-212.43,122.09-100.15,250.72-257.91,113.92-411.25,104.79,34.44,189.46,106.98,248.3,195.84,82.06,123.93,76.14,276.54-9.3,396.76-49.31,69.38-109.54,124.67-179.42,175.23-102.66,74.28-209.63,135.29-324.97,189.34l-352.45,165.18c-107.41,50.34-208.28,104.35-304.85,172.7v.02Z"/>
@@ -243,7 +243,7 @@ const STYLES = `
   }
 `;
 
-export class PolarFooterElement extends POLAR_FOOTER_ELEMENT_BASE {
+export class PolrFooterElement extends POLAR_FOOTER_ELEMENT_BASE {
   private root: ShadowRoot;
   private badgeEl!: HTMLAnchorElement;
   private iconSvg!: SVGElement;
@@ -432,18 +432,18 @@ export class PolarFooterElement extends POLAR_FOOTER_ELEMENT_BASE {
   }
 }
 
-export function registerPolarFooter(tagName = POLAR_FOOTER_TAG_NAME) {
+export function registerPolrFooter(tagName = POLAR_FOOTER_TAG_NAME) {
   if (typeof window === "undefined" || !("customElements" in window)) {
     return;
   }
 
   if (!window.customElements.get(tagName)) {
-    window.customElements.define(tagName, PolarFooterElement);
+    window.customElements.define(tagName, PolrFooterElement);
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "polar-footer": PolarFooterElement;
+    "polar-footer": PolrFooterElement;
   }
 }
