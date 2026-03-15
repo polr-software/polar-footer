@@ -1,6 +1,6 @@
 {
   "name": "@polr/footer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Reusable Polr footer package with web component and React entrypoint",
   "type": "module",
   "main": "dist/index.cjs",
@@ -45,6 +45,12 @@
     }
   },
   "dependencies": {},
-  "keywords": ["footer", "web-component", "react", "polr", "branding"],
+  "keywords": [
+    "footer",
+    "web-component",
+    "react",
+    "polr",
+    "branding"
+  ],
   "license": "MIT"
 }
