@@ -53,6 +53,12 @@ Instalacja:
 npm install @polr/footer
 ```
 
+Albo z Bun:
+
+```bash
+bun add @polr/footer
+```
+
 ## Uzycie w React
 
 ```tsx
@@ -85,8 +91,21 @@ npm install
 npm run dev
 ```
 
+Z Bun:
+
+```bash
+bun install
+bun run dev
+```
+
 ## Build
 
 ```bash
 npm run build
+```
+
+Z Bun:
+
+```bash
+bun run build
 ```
