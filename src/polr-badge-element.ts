@@ -1,7 +1,5 @@
 import {
   DEFAULT_HREF,
-  ICON_ANIMATION_EASING,
-  KEYFRAMES,
   POLAR_ELEMENT_BASE,
   sanitizeHref,
 } from "./polr-brand-badge";
@@ -11,8 +9,6 @@ type BadgeStage = "idle" | "settled" | "hover";
 export abstract class PolrAnimatedBadgeElement extends POLAR_ELEMENT_BASE {
   private root: ShadowRoot;
   private badgeEl!: HTMLAnchorElement;
-  private iconStageEl!: HTMLElement;
-  private activeAnimations: Set<Animation> = new Set();
   private pendingFrames: Set<number> = new Set();
   private cleanupFns: Array<() => void> = [];
   private destroyed = false;
@@ -39,7 +35,6 @@ export abstract class PolrAnimatedBadgeElement extends POLAR_ELEMENT_BASE {
     this.cleanupFns = [];
     this.pendingFrames.forEach((id) => cancelAnimationFrame(id));
     this.pendingFrames.clear();
-    this.cancelAnimations();
   }
 
   attributeChangedCallback(name: string) {
@@ -62,19 +57,7 @@ export abstract class PolrAnimatedBadgeElement extends POLAR_ELEMENT_BASE {
     await this.nextFrame();
     if (this.destroyed) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      this.setStage("settled");
-      this.setIconState("translateY(0) scale(1)", "1");
-      return;
-    }
-
     this.setStage("settled");
-    this.setIconState("translateY(8px) scale(0.94)", "0");
-    this.anim(this.iconStageEl, [...KEYFRAMES.iconEntrance], {
-      duration: 460,
-      easing: ICON_ANIMATION_EASING,
-      fill: "forwards",
-    });
   }
 
   private render() {
@@ -82,7 +65,6 @@ export abstract class PolrAnimatedBadgeElement extends POLAR_ELEMENT_BASE {
 
     this.root.innerHTML = this.renderTemplate(href);
     this.badgeEl = this.root.querySelector(".badge")!;
-    this.iconStageEl = this.root.querySelector(".icon-stage")!;
   }
 
   private bindInteractions() {
@@ -112,20 +94,7 @@ export abstract class PolrAnimatedBadgeElement extends POLAR_ELEMENT_BASE {
   private enterHoverState() {
     if (this.destroyed) return;
 
-    this.cancelAnimations();
     this.setStage("hover");
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      this.setIconState("translateY(0) scale(1)", "1");
-      return;
-    }
-
-    this.setIconState("translateY(0) scale(1)", "1");
-    this.anim(this.iconStageEl, [...KEYFRAMES.iconHover], {
-      duration: 220,
-      easing: ICON_ANIMATION_EASING,
-      fill: "forwards",
-    });
   }
 
   private leaveHoverState() {
@@ -136,36 +105,11 @@ export abstract class PolrAnimatedBadgeElement extends POLAR_ELEMENT_BASE {
       return;
     }
 
-    this.cancelAnimations();
     this.setStage("settled");
-    this.setIconState("translateY(0) scale(1)", "1");
   }
 
   private setStage(stage: BadgeStage) {
     this.badgeEl.dataset.stage = stage;
-  }
-
-  private setIconState(transform: string, opacity: string) {
-    this.iconStageEl.style.transform = transform;
-    this.iconStageEl.style.opacity = opacity;
-  }
-
-  private cancelAnimations() {
-    this.activeAnimations.forEach((animation) => animation.cancel());
-    this.activeAnimations.clear();
-  }
-
-  private anim(
-    element: Element,
-    keyframes: Keyframe[],
-    options: KeyframeAnimationOptions,
-  ): Animation {
-    const animation = element.animate(keyframes, options);
-    this.activeAnimations.add(animation);
-    animation.finished
-      .then(() => this.activeAnimations.delete(animation))
-      .catch(() => this.activeAnimations.delete(animation));
-    return animation;
   }
 
   private nextFrame(): Promise<void> {

@@ -1,7 +1,5 @@
 import {
-  BLACK_VARIANT_ICON_SVG,
   BLACK_VARIANT_WORDMARK_SVG,
-  LIGHT_VARIANT_ICON_SVG,
   LIGHT_VARIANT_WORDMARK_SVG,
 } from "virtual:polr-brand-assets";
 
@@ -20,21 +18,6 @@ const LINK_LABEL = "Powered by Polr";
 const ALLOWED_PROTOCOLS = ["http:", "https:", "mailto:"] as const;
 
 const TEXT_EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
-const ICON_EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
-
-export const KEYFRAMES = {
-  iconEntrance: [
-    { opacity: 0, transform: "translateY(8px) scale(0.94)" },
-    { opacity: 1, transform: "translateY(-1px) scale(1.02)", offset: 0.72 },
-    { opacity: 1, transform: "translateY(0) scale(1)" },
-  ],
-  iconHover: [
-    { transform: "translateY(0) scale(1)" },
-    { transform: "translateY(-1px) scale(1.03)" },
-  ],
-} as const;
-
-export const ICON_ANIMATION_EASING = ICON_EASING;
 
 export function sanitizeHref(raw: string): string {
   try {
@@ -136,6 +119,8 @@ const BADGE_STYLES = `
   .copy-track {
     display: inline-flex;
     align-items: center;
+    white-space: nowrap;
+    flex: 0 0 auto;
     transform: translateY(12%);
     opacity: 0;
     transition:
@@ -150,11 +135,10 @@ const BADGE_STYLES = `
     line-height: 1;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    light-space: nowrap;
+    white-space: nowrap;
   }
 
-  .wordmark-asset,
-  .icon-asset {
+  .wordmark-asset {
     display: none;
     line-height: 0;
   }
@@ -165,50 +149,17 @@ const BADGE_STYLES = `
     height: 14px;
   }
 
-  .icon-wrap {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-    width: 20px;
-    height: 20px;
-  }
-
-  .icon-stage {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    opacity: 0;
-    transform: translateY(8px) scale(0.94);
-    transform-origin: center;
-    transition: filter 180ms ease;
-    will-change: transform, opacity;
-  }
-
-  .icon-asset svg {
-    display: block;
-    width: 20px;
-    height: 20px;
-  }
-
-  .wordmark-light,
-  .icon-light {
+  .wordmark-light {
     display: inline-flex;
   }
 
   :host([variant="black"]) .wordmark-light,
-  :host([variant="black"]) .icon-light,
-  :host(:not([variant])[theme="dark"]) .wordmark-light,
-  :host(:not([variant])[theme="dark"]) .icon-light {
+  :host(:not([variant])[theme="dark"]) .wordmark-light {
     display: none;
   }
 
   :host([variant="black"]) .wordmark-black,
-  :host([variant="black"]) .icon-black,
-  :host(:not([variant])[theme="dark"]) .wordmark-black,
-  :host(:not([variant])[theme="dark"]) .icon-black {
+  :host(:not([variant])[theme="dark"]) .wordmark-black {
     display: inline-flex;
   }
 
@@ -232,27 +183,10 @@ const BADGE_STYLES = `
     opacity: 1;
   }
 
-  .badge[data-stage="idle"] .icon-stage,
-  .badge[data-stage="settled"] .icon-stage,
-  .badge[data-stage="hover"] .icon-stage {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  .badge[data-stage="hover"] .icon-stage {
-    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.12));
-  }
-
-  :host([variant="black"]) .badge[data-stage="hover"] .icon-stage,
-  :host(:not([variant])[theme="dark"]) .badge[data-stage="hover"] .icon-stage {
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.12));
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .badge,
     .copy,
-    .copy-track,
-    .icon-stage {
+    .copy-track {
       transition: none;
       animation: none;
       will-change: auto;
@@ -314,12 +248,6 @@ export function createBadgeMarkup(href: string): string {
         <span class="copy-track">
           <span class="wordmark-asset wordmark-light">${LIGHT_VARIANT_WORDMARK_SVG}</span>
           <span class="wordmark-asset wordmark-black">${BLACK_VARIANT_WORDMARK_SVG}</span>
-        </span>
-      </span>
-      <span class="icon-wrap" aria-hidden="true">
-        <span class="icon-stage">
-          <span class="icon-asset icon-light">${LIGHT_VARIANT_ICON_SVG}</span>
-          <span class="icon-asset icon-black">${BLACK_VARIANT_ICON_SVG}</span>
         </span>
       </span>
     </a>

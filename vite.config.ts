@@ -16,8 +16,6 @@ function readSvgMarkup(filePath: string): string {
 function polrBrandAssetsPlugin(): Plugin {
   const assetDirectory = resolve(__dirname, "public");
   const assets = {
-    LIGHT_VARIANT_ICON_SVG: resolve(assetDirectory, "logobia\u0142e.svg"),
-    BLACK_VARIANT_ICON_SVG: resolve(assetDirectory, "logoczarne.svg"),
     LIGHT_VARIANT_WORDMARK_SVG: resolve(assetDirectory, "Polrczarne.svg"),
     BLACK_VARIANT_WORDMARK_SVG: resolve(assetDirectory, "Polrbiale.svg"),
   } as const;
