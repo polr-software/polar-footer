@@ -13,7 +13,8 @@ Docelowy model dla tego repo:
 Ten projekt eksportuje teraz:
 
 - web component pod `polar-footer`
-- wrapper React pod `polar-footer/react`
+- web component pod `polar-logo`
+- wrappery React pod `@polr/footer/react`
 
 ## Przed pierwszym publish
 
@@ -62,16 +63,21 @@ bun add @polr/footer
 ## Uzycie w React
 
 ```tsx
-import { PolrFooter } from "@polr/footer/react";
+import { PolrFooter, PolrLogo } from "@polr/footer/react";
 
 export function Layout() {
-  return <PolrFooter variant="white" href="https://polr.pl" />;
+  return (
+    <>
+      <PolrLogo variant="light" href="https://polr.pl" />
+      <PolrFooter variant="light" href="https://polr.pl" />
+    </>
+  );
 }
 ```
 
 Dostepne warianty:
 
-- `white`
+- `light`
 - `black`
 
 ## Uzycie jako web component
@@ -81,8 +87,11 @@ import "@polr/footer";
 ```
 
 ```html
+<polar-logo variant="light" href="https://polr.pl"></polar-logo>
 <polar-footer variant="black" href="https://polr.pl"></polar-footer>
 ```
+
+`polar-logo` to standalone badge z ta sama animacja i logika hover/focus, ale bez kontenera footera.
 
 ## Development
 

@@ -1,4 +1,5 @@
 import { registerPolrFooter } from "./polar-footer";
+import { registerPolrLogo } from "./polar-logo";
 
 export {
   POLAR_FOOTER_TAG_NAME,
@@ -8,5 +9,14 @@ export {
   type PolrFooterTheme,
   type PolrFooterVariant,
 } from "./polar-footer";
+export {
+  POLAR_LOGO_TAG_NAME,
+  POLAR_LOGO_VARIANTS,
+  PolrLogoElement,
+  registerPolrLogo,
+  type PolrLogoTheme,
+  type PolrLogoVariant,
+} from "./polar-logo";
 
 registerPolrFooter();
+registerPolrLogo();
