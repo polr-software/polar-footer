@@ -84,6 +84,8 @@ const BADGE_STYLES = `
     background: var(--pf-pill-bg);
     cursor: pointer;
     visibility: hidden;
+    will-change: transform;
+    contain: layout style paint;
     transition: background 180ms ease, transform 180ms ease;
   }
 
@@ -104,14 +106,14 @@ const BADGE_STYLES = `
   }
 
   .copy {
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: 0fr;
     align-items: center;
     overflow: hidden;
-    max-width: 0;
     opacity: 0;
     margin-right: 0;
     transition:
-      max-width 420ms ${TEXT_EASING},
+      grid-template-columns 420ms ${TEXT_EASING},
       opacity 180ms ease,
       margin-right 420ms ${TEXT_EASING};
   }
@@ -120,7 +122,7 @@ const BADGE_STYLES = `
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
-    flex: 0 0 auto;
+    min-width: 0;
     transform: translateY(12%);
     opacity: 0;
     transition:
@@ -165,13 +167,13 @@ const BADGE_STYLES = `
 
   .badge[data-stage="settled"] .wordmark,
   .badge[data-stage="hover"] .wordmark {
-    max-width: 86px;
+    grid-template-columns: 1fr;
     opacity: 1;
     margin-right: 10px;
   }
 
   .badge[data-stage="hover"] .powered {
-    max-width: 120px;
+    grid-template-columns: 1fr;
     opacity: 1;
     margin-right: 8px;
   }
