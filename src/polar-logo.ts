@@ -31,9 +31,3 @@ export function registerPolrLogo(tagName = POLAR_LOGO_TAG_NAME) {
     window.customElements.define(tagName, PolrLogoElement);
   }
 }
-
-declare global {
-  interface HTMLElementTagNameMap {
-    "polar-logo": PolrLogoElement;
-  }
-}

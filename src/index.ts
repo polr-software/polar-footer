@@ -1,5 +1,5 @@
-import { registerPolrFooter } from "./polar-footer";
-import { registerPolrLogo } from "./polar-logo";
+import { PolrFooterElement, registerPolrFooter } from "./polar-footer";
+import { PolrLogoElement, registerPolrLogo } from "./polar-logo";
 
 export {
   POLAR_FOOTER_TAG_NAME,
@@ -20,3 +20,10 @@ export {
 
 registerPolrFooter();
 registerPolrLogo();
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "polar-footer": PolrFooterElement;
+    "polar-logo": PolrLogoElement;
+  }
+}

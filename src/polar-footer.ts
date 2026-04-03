@@ -35,8 +35,3 @@ export function registerPolrFooter(tagName = POLAR_FOOTER_TAG_NAME) {
   }
 }
 
-declare global {
-  interface HTMLElementTagNameMap {
-    "polar-footer": PolrFooterElement;
-  }
-}

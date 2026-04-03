@@ -7,7 +7,7 @@ export const POLAR_ELEMENT_BASE = (
   typeof HTMLElement === "undefined" ? class {} : HTMLElement
 ) as typeof HTMLElement;
 
-export const POLAR_BRAND_VARIANTS = ["light", "black"] as const;
+export const POLAR_BRAND_VARIANTS = ["light", "dark"] as const;
 
 export type PolrBrandVariant = (typeof POLAR_BRAND_VARIANTS)[number];
 export type PolrBrandTheme = "light" | "dark";
@@ -55,7 +55,7 @@ function createHostStyles(display: "block" | "inline-block"): string {
       font-family: var(--pf-font);
     }
 
-    :host([variant="black"]),
+    :host([variant="dark"]),
     :host(:not([variant])[theme="dark"]) {
       --pf-color: #efefef;
       --pf-muted: rgba(239, 239, 239, 0.68);
@@ -153,13 +153,13 @@ const BADGE_STYLES = `
     display: inline-flex;
   }
 
-  :host([variant="black"]) .wordmark-light,
+  :host([variant="dark"]) .wordmark-light,
   :host(:not([variant])[theme="dark"]) .wordmark-light {
     display: none;
   }
 
-  :host([variant="black"]) .wordmark-black,
-  :host(:not([variant])[theme="dark"]) .wordmark-black {
+  :host([variant="dark"]) .wordmark-dark,
+  :host(:not([variant])[theme="dark"]) .wordmark-dark {
     display: inline-flex;
   }
 
@@ -205,13 +205,12 @@ export const FOOTER_SHELL_STYLES = `
     -webkit-backdrop-filter: blur(14px);
     border-top: 1px solid var(--pf-border);
     box-shadow: var(--pf-shadow);
-    transition: background 220ms ease, box-shadow 220ms ease;
+    transition: background 220ms ease;
   }
 
   .footer:hover,
   .footer:focus-within {
     background: var(--pf-hover-bg);
-    box-shadow: var(--pf-hover-shadow);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -247,7 +246,7 @@ export function createBadgeMarkup(href: string): string {
       <span class="copy wordmark" aria-hidden="true">
         <span class="copy-track">
           <span class="wordmark-asset wordmark-light">${LIGHT_VARIANT_WORDMARK_SVG}</span>
-          <span class="wordmark-asset wordmark-black">${BLACK_VARIANT_WORDMARK_SVG}</span>
+          <span class="wordmark-asset wordmark-dark">${BLACK_VARIANT_WORDMARK_SVG}</span>
         </span>
       </span>
     </a>

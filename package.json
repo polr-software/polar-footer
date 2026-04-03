@@ -1,6 +1,6 @@
 {
   "name": "@polr/footer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Reusable Polr footer package with web component and React entrypoint",
   "type": "module",
   "main": "dist/index.cjs",
