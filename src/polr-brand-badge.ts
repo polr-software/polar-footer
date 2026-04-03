@@ -205,18 +205,6 @@ export const FOOTER_SHELL_STYLES = `
     -webkit-backdrop-filter: blur(14px);
     border-top: 1px solid var(--pf-border);
     box-shadow: var(--pf-shadow);
-    transition: background 220ms ease;
-  }
-
-  .footer:hover,
-  .footer:focus-within {
-    background: var(--pf-hover-bg);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .footer {
-      transition: none;
-    }
   }
 `;
 
